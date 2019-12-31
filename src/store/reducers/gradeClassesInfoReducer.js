@@ -7,6 +7,7 @@ const initialState = {
 //数据处理器
 const reducer = (state=initialState, action)=>{
     switch (action.type){
+        //reducer检测对应的action type，并将数据返回到数据中心(rootReducer)
         case actionTypes.GET_GRADES_CLASSES_INFO:
             return{
                 ...state,

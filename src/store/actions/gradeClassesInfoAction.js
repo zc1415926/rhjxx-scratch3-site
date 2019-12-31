@@ -3,7 +3,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
-//异步函数，完成异步操作后，调用同步函数
+//异步函数，完成异步操作后，调用同步函数并传递获取的数据
 export const getGradeClassesInfo = ()=>{
     let gradeClassesInfo = [];
 
@@ -11,6 +11,7 @@ export const getGradeClassesInfo = ()=>{
         axios.get('/grades')
         .then(res => {
             gradeClassesInfo = res.data;
+            //使用dispatch调用toGetGradeClassesInfo
             dispatch(toGetGradeClassesInfo(gradeClassesInfo))            
         })
         .catch(err => {
@@ -19,8 +20,7 @@ export const getGradeClassesInfo = ()=>{
     }
 }
 
-//把原来的同步的storeResult分解为异步的storeResult执行完操作后，调用同步的saveResult
-//这里是同步函数
+//同步函数，拿到数据后，返回生成的action
 export const toGetGradeClassesInfo = (gradeClassesInfo)=>{
     return {
         type: actionTypes.GET_GRADES_CLASSES_INFO,

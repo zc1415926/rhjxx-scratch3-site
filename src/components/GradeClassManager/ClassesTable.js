@@ -2,8 +2,6 @@ import React from 'react';
 import MaterialTable from 'material-table';
 
 export default function MaterialTableDemo(props) {
-    console.log(props.ClassesData);
-    
     const [state, setState] = React.useState({
         columns: [
           { title: 'ID', field: 'id' },
@@ -11,7 +9,6 @@ export default function MaterialTableDemo(props) {
         ],
         data: props.ClassesData
       });
-    
 
   return (
     <MaterialTable

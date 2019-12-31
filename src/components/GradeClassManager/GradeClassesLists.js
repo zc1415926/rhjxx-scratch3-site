@@ -8,7 +8,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import ClassesTable from './ClassesTable';
 
-
 const useStyles = makeStyles({
     root: {
       width: '100%',
@@ -19,15 +18,9 @@ export default function GradeClassesLists(props){
 
   const classes = useStyles();
 
-  
-
   return (
     <div className={classes.root}>
-      
       {props.gradeClassesInfo.map((gradeItem)=>{
-        console.log('GradeClassesLists')
-        console.log(gradeItem)
-
         return(
           <ExpansionPanel key={gradeItem.id}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} 
@@ -36,9 +29,7 @@ export default function GradeClassesLists(props){
               <Typography className={classes.heading}>{gradeItem.name}级</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-
               <ClassesTable ClassesData={gradeItem.classes}/>
-
             </ExpansionPanelDetails>
           </ExpansionPanel>
         );
