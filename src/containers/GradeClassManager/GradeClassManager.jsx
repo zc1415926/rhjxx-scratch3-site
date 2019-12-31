@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators  from '../../store/actions/index';
+import GradeClassesLists from '../../components/GradeClassManager/GradeClassesLists';
 
 class GradeClassManager extends React.Component{
     constructor(props){
@@ -9,31 +10,16 @@ class GradeClassManager extends React.Component{
             gradeClassesInfo: []
         }
     }
-
+    
     componentDidMount(){
         this.props.onGetGradeClassesInfo();
     }
-    mapGradesData(gradeData){
-        return(
-            <div key={gradeData.id}>
-                <div>{gradeData.name}级<button>X</button></div>
-                <div>{gradeData.classes.map((classItem)=>this.mapClassesData(classItem))}</div>
-            </div>
-        );
-    }
-    mapClassesData(classData){
-        return(
-            <div key={classData.id}>{classData.name}班<button>X</button></div>
-        );
-    }
+
     render(){
         return (
             <div>
                 <h1>GradeClassManager</h1>
-                {/* {console.log('[GradeClassManager]', this.props.gradeClassesInfo)} */}
-
-                <div>{this.props.gradeClassesInfo.map((gradeItem)=>this.mapGradesData(gradeItem))}</div>
-            
+                <GradeClassesLists gradeClassesInfo={this.props.gradeClassesInfo} />
             </div>
         );
     }
