@@ -10,3 +10,7 @@ export {
     storeResult,
     deleteResult
 } from './result';
+
+export {
+    getGradeClassesInfo
+} from './gradeClassesInfoAction';
