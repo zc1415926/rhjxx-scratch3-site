@@ -19,8 +19,8 @@ import gradeClassesInfoReducer from './store/reducers/gradeClassesInfoReducer';
 
 //把2个reducer合成一个，管counter的叫ctr，管result的叫res
 const rootReducer = combineReducers({
-    ctr: counterReducer,
-    res: resultReducer,
+    //ctr: counterReducer,
+    //res: resultReducer,
     gradeClassesInfoReducer: gradeClassesInfoReducer
 });
 

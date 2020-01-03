@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GradeTable from './GradeTable';
-import ClassesTable from './ClassesTable';
 
 const useStyles = makeStyles({
     root: {
