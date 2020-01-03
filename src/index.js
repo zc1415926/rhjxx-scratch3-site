@@ -13,8 +13,8 @@ import {Provider} from 'react-redux';
 //引入redux-thunk使得我们可以使用异步action
 import thunk from 'redux-thunk';
 //引入我们自己建立的数据处理器(拆分后)
-import counterReducer from './store/reducers/counter';
-import resultReducer from './store/reducers/result';
+//import counterReducer from './store/reducers/counter';
+//import resultReducer from './store/reducers/result';
 import gradeClassesInfoReducer from './store/reducers/gradeClassesInfoReducer';
 
 //把2个reducer合成一个，管counter的叫ctr，管result的叫res
