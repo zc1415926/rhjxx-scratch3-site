@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators  from '../../store/actions/index';
 import GradeClassesLists from '../../components/GradeClassManager/GradeClassesLists';
+import Gradelist from '../../components/GradeClassManager/GradeList';
 
 class GradeClassManager extends React.Component{
     constructor(props){
@@ -20,7 +21,9 @@ class GradeClassManager extends React.Component{
     render(){
         return (
             <div>
-                <h1>GradeClassManager</h1>
+                <h1>年级管理</h1>
+                <Gradelist gradeClassesInfo={this.props.gradeClassesInfo} />
+                <h1>班级管理</h1>
                 <GradeClassesLists gradeClassesInfo={this.props.gradeClassesInfo} />
             </div>
         );

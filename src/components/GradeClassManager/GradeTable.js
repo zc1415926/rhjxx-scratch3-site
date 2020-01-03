@@ -1,24 +1,20 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 
-export default function ClassesTable(props) {
- 
+export default function GradeTable(props) {
     const [state, setState] = React.useState({
         columns: [
           { title: 'ID', field: 'id' },
           { title: 'Name', field: 'name' },
         ],
-        data: props.ClassesData
+        data: props.GradeData
       });
+
   return (
     <MaterialTable
-      title='班级信息表'
+      title="年级信息表"
       columns={state.columns}
       data={state.data}
-      /* 不显示搜索框 */
-      options={{
-        search: false
-      }}
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {

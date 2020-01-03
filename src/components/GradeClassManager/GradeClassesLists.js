@@ -20,7 +20,11 @@ export default function GradeClassesLists(props){
 
   return (
     <div className={classes.root}>
-      {props.gradeClassesInfo.map((gradeItem)=>{
+      <h2>这里要改成用select选择年级之后显示班级</h2>
+      {
+      //没有数据时，不会执行map函数，也就是什么也不显示
+      //获取到数据，又要执行map就刷新了组件
+      props.gradeClassesInfo.map((gradeItem)=>{
         return(
           <ExpansionPanel key={gradeItem.id}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} 
