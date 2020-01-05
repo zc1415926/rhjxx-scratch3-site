@@ -12,5 +12,6 @@ export {
 } from './result';
 
 export {
-    getGradeClassesInfo
+    getGradeClassesInfo,
+    getClassesInfo
 } from './gradeClassesInfoAction';

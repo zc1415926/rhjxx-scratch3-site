@@ -2,19 +2,20 @@ import React from 'react';
 import MaterialTable from 'material-table';
 
 export default function ClassesTable(props) {
- 
     const [state, setState] = React.useState({
         columns: [
-          { title: 'ID', field: 'id' },
-          { title: 'Name', field: 'name' },
+          { title: 'ID', field: 'classNum' },
+          { title: 'Name', field: 'className' },
         ],
-        data: props.ClassesData
+        //data: props.classesData
       });
   return (
     <MaterialTable
-      title='班级信息表'
+      title={props.grade+'级班级信息表'}
       columns={state.columns}
-      data={state.data}
+      //不要把data放到state里，这样就只能更新一次数据，后边的更新就显示不出来了
+      //data={state.data}
+      data={props.classesData}
       /* 不显示搜索框 */
       options={{
         search: false

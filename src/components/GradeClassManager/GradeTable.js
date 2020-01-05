@@ -4,8 +4,8 @@ import MaterialTable from 'material-table';
 export default function GradeTable(props) {
     const [state, setState] = React.useState({
         columns: [
-          { title: 'ID', field: 'id' },
-          { title: 'Name', field: 'name' },
+          { title: '班级Id', field: 'gradeNum' },
+          { title: '班级名称', field: 'gradeName' },
         ],
         data: props.GradeData
       });

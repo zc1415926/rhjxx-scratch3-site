@@ -21,7 +21,7 @@ import gradeClassesInfoReducer from './store/reducers/gradeClassesInfoReducer';
 const rootReducer = combineReducers({
     //ctr: counterReducer,
     //res: resultReducer,
-    gradeClassesInfoReducer: gradeClassesInfoReducer
+    gcInfoReducer: gradeClassesInfoReducer
 });
 
 //使用composerEnhancers配置redux devtool

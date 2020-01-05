@@ -27,3 +27,25 @@ export const toGetGradeClassesInfo = (gradeClassesInfo)=>{
         gradeClassesInfo: gradeClassesInfo
     }
 }
+
+export const getClassesInfo = (selectedGrade)=>{
+    //let classesInfo = [];
+    
+    return dispatch=>{
+        axios.get('/classes?gradeId='+selectedGrade)
+        .then(res => {
+            //classesInfo = res.data;
+            dispatch(toGetClassesInfo(res.data))            
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+}
+
+export const toGetClassesInfo = (classesInfoParam)=>{
+    return {
+        type: actionTypes.GET_CLASSES_INFO_BY_GRADEID,
+        classesInfoPayload: classesInfoParam
+    }
+}
