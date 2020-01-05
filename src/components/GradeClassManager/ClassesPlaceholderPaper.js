@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     },
   });
 
+  //放一个占位符，没有读取班级数据时，占好位置，以免网页突然加长一块用户注意不到
   export default function ClassesPlaceholderPaper(props) {
     const classes = useStyles();
   

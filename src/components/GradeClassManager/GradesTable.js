@@ -7,14 +7,15 @@ export default function GradeTable(props) {
           { title: '班级Id', field: 'gradeNum' },
           { title: '班级名称', field: 'gradeName' },
         ],
-        data: props.GradeData
+        //data: props.GradeData
       });
 
   return (
     <MaterialTable
       title="年级信息表"
       columns={state.columns}
-      data={state.data}
+      //props一更新，表格的显示就可以一起更新
+      data={props.GradeData}
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {

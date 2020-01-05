@@ -14,20 +14,22 @@ const useStyles = makeStyles({
     },
   });
 
-export default function ClassesLists(props){
+export default function GradeSelect(props){
   const classes = useStyles();
   const [age, setAge] = React.useState('');
   const handleChange = event => {
+    //先将select的值改为选中的值
     setAge(event.target.value);
+    //再调用上级组件传入的函数并传入参数，完成子组件向父组件传递参数
     props.onGradeSelectChanged(event.target.value);
   };
   return (
     <div className={classes.root}>
       <FormControl variant="filled" className={classes.formControl}>
-        <InputLabel id="demo-simple-select-filled-label">请选择年级</InputLabel>
+        <InputLabel id="grade-select-filled-label">请选择年级</InputLabel>
         <Select
-          labelId="demo-simple-select-filled-label"
-          id="demo-simple-select-filled"
+          labelId="grade-select-filled-label"
+          id="grade-select-filled"
           value={age}
           onChange={handleChange}
         >
@@ -37,17 +39,6 @@ export default function ClassesLists(props){
 
         </Select>
       </FormControl>
-      
-      {/* {
-      //没有数据时，不会执行map函数，也就是什么也不显示
-      //获取到数据，又要执行map就刷新了组件
-      props.gradeInfo.map((gradeItem)=>{
-        return(
-
-              <ClassesTable ClassesData={gradeItem.classes} gradeName={gradeItem.name}/>
-
-        );
-      })} */}
     </div>
   );
 }

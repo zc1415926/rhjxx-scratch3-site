@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators  from '../../store/actions/index';
-import ClassesList from '../../components/GradeClassManager/ClassesList';
-import Gradelist from '../../components/GradeClassManager/GradeList';
+import GradeSelect from '../../components/GradeClassManager/GradeSelect';
+import GradesTable from '../../components/GradeClassManager/GradesTable';
 import ClassesTable from '../../components/GradeClassManager/ClassesTable';
 import ClassesPhPaper from '../../components/GradeClassManager/ClassesPlaceholderPaper';
 
@@ -21,7 +21,9 @@ class GradeClassManager extends React.Component{
     }
 
     gradeSelectChangeHandler=(selectedGrade)=>{
+        //保存GradeSelect中已选的年级，放在班级信息表的title里显示用
         this.setState({selectedGrade: selectedGrade});
+        //根据选中的年级，请求班级数据
         this.props.onGetClassesInfo(selectedGrade);        
     }
 
@@ -29,15 +31,22 @@ class GradeClassManager extends React.Component{
         return (
             <div>
                 <h1>年级管理</h1>
-                <Gradelist gradeClassesInfo={this.props.gradeClassesInfo} />
+                {
+                    //显示年级信息表
+                    //如果有数据就显示数据，如果没有就显示空字符串
+                    this.props.gradeClassesInfo.length>0
+                        ?<GradesTable GradeData={this.props.gradeClassesInfo}/>
+                        :'' 
+                }
                 <h1>班级管理</h1>
-                <ClassesList gradeInfo={this.props.gradeClassesInfo} 
+                {/* 获取年级信息后，传入select中，选择不同的年级后，请求该年级的班级数据传递给ClassesTable */}
+                <GradeSelect gradeInfo={this.props.gradeClassesInfo} 
                             onGradeSelectChanged={(selectedGrade)=>this.gradeSelectChangeHandler(selectedGrade)}/>
                 {
-                    
+                    //接收到年级信息后显示对应年级的班级信息表
                     this.props.classesInfo.length > 0
                         ? <ClassesTable classesData={this.props.classesInfo} grade={this.state.selectedGrade}/>
-                        : <ClassesPhPaper>请在上方选择年级</ClassesPhPaper>
+                        : <ClassesPhPaper>要查看班级信息表，请在上方选择年级</ClassesPhPaper>
                 }
             </div>
         );
