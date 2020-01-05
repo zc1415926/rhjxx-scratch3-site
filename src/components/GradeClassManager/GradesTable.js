@@ -2,10 +2,10 @@ import React from 'react';
 import MaterialTable from 'material-table';
 
 export default function GradeTable(props) {
-    const [state, setState] = React.useState({
+    const [state] = React.useState({
         columns: [
-          { title: '班级Id', field: 'gradeNum' },
-          { title: '班级名称', field: 'gradeName' },
+          { title: 'gradeNum', field: 'gradeNum' },
+          { title: 'gradeName', field: 'gradeName' },
         ],
         //data: props.GradeData
       });
@@ -19,38 +19,20 @@ export default function GradeTable(props) {
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              setState(prevState => {
-                const data = [...prevState.data];
-                data.push(newData);
-                return { ...prevState, data };
-              });
-            }, 600);
+            resolve();
+            props.postGradeHandler(newData);
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              if (oldData) {
-                setState(prevState => {
-                  const data = [...prevState.data];
-                  data[data.indexOf(oldData)] = newData;
-                  return { ...prevState, data };
-                });
-              }
-            }, 600);
+            resolve();
+            //console.log('oldData=>',oldData);
+            //console.log('newData=>',newData);
+            props.putGradeHandler(newData)
           }),
         onRowDelete: oldData =>
           new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              setState(prevState => {
-                const data = [...prevState.data];
-                data.splice(data.indexOf(oldData), 1);
-                return { ...prevState, data };
-              });
-            }, 600);
+            resolve();
+            props.deleteGradeHandler(oldData.id);
           }),
       }}
     />

@@ -49,3 +49,44 @@ export const toGetClassesInfo = (classesInfoParam)=>{
         classesInfoPayload: classesInfoParam
     }
 }
+
+export const postGradeInfo = (gradeInfo)=>{
+    return dispatch=>{
+        axios.post('/grades', gradeInfo)
+            .then(res=>{
+                //console.log('res=>',res);  
+                //post 发送成功后，重新读取年级信息，直接从内存删除再显示出来可能与数据库不同步
+                dispatch(getGradeClassesInfo())           
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}
+
+export const putGradeInfo = (gradeInfo)=>{
+    return dispatch=>{
+        console.log('gradeInfo=>',gradeInfo);
+        axios.put('/grades/' + gradeInfo.id, gradeInfo)
+            .then(res=>{
+                //console.log('res=>',res); 
+                dispatch(getGradeClassesInfo())           
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}
+
+export const deleteGradeInfo = (gradeId)=>{
+    return dispatch=>{
+        axios.delete('/grades/' + gradeId)
+            .then(res=>{
+                //post 发送成功后，重新读取年级信息
+                dispatch(getGradeClassesInfo())           
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}

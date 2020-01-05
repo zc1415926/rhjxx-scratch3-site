@@ -13,5 +13,8 @@ export {
 
 export {
     getGradeClassesInfo,
-    getClassesInfo
+    getClassesInfo,
+    postGradeInfo,
+    putGradeInfo,
+    deleteGradeInfo
 } from './gradeClassesInfoAction';

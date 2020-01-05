@@ -35,7 +35,10 @@ class GradeClassManager extends React.Component{
                     //显示年级信息表
                     //如果有数据就显示数据，如果没有就显示空字符串
                     this.props.gradeClassesInfo.length>0
-                        ?<GradesTable GradeData={this.props.gradeClassesInfo}/>
+                        ?<GradesTable GradeData={this.props.gradeClassesInfo}
+                            postGradeHandler={(gradeInfo)=>this.props.onPostGradeInfo(gradeInfo)}
+                            putGradeHandler={(gradeInfo)=>this.props.onPutGradeInfo(gradeInfo)}
+                            deleteGradeHandler={(gradeId)=>this.props.onDeleteGradeInfo(gradeId)}/>
                         :'' 
                 }
                 <h1>班级管理</h1>
@@ -69,6 +72,9 @@ const mapDispatchToProps = (dispatch) =>{
         //调用actionCreator，生成action，然后dispatch
         onGetGradeClassesInfo: ()=>dispatch(actionCreators.getGradeClassesInfo()),
         onGetClassesInfo: (selectedGrade)=>dispatch(actionCreators.getClassesInfo(selectedGrade)),
+        onPostGradeInfo: (gradeInfo)=>dispatch(actionCreators.postGradeInfo(gradeInfo)),
+        onPutGradeInfo: (gradeInfo)=>dispatch(actionCreators.putGradeInfo(gradeInfo)),
+        onDeleteGradeInfo: (gradeId)=>dispatch(actionCreators.deleteGradeInfo(gradeId))
     }
 }
 
