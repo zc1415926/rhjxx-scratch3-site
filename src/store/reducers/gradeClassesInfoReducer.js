@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 //初始数据
 const initialState = {
     gradeClassesInfo: [],
-    classesInfo: []
+    classesInfo: [],
+    isGradeTableEditing: false
 }
 //数据处理器
 const reducer = (state=initialState, action)=>{
@@ -18,6 +19,11 @@ const reducer = (state=initialState, action)=>{
             return{
                 ...state,
                 classesInfo: action.classesInfoPayload
+            }
+        case actionTypes.TOGGLE_GRADE_TABLE_EDITING:
+            return{
+                ...state,
+                isGradeTableEditing: action.isEditing
             }
         default:
     }

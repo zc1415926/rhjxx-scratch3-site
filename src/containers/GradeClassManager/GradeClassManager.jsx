@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators  from '../../store/actions/index';
+import GradesTable from './GradesTable';
 import GradeSelect from '../../components/GradeClassManager/GradeSelect';
-import GradesTable from '../../components/GradeClassManager/GradesTable';
 import ClassesTable from '../../components/GradeClassManager/ClassesTable';
 import ClassesPhPaper from '../../components/GradeClassManager/ClassesPlaceholderPaper';
 
