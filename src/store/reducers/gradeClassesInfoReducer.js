@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 //初始数据
 const initialState = {
-    gradeClassesInfo: [],
+    gradesInfo: [],
     classesInfo: [],
     isGradeTableEditing: false,
     isClassesTableEditing: false,
@@ -14,9 +14,9 @@ const reducer = (state=initialState, action)=>{
         case actionTypes.GET_GRADES_CLASSES_INFO:
             return{
                 ...state,
-               gradeClassesInfo: action.gradeClassesInfo
+               gradesInfo: action.gradesInfo
             }
-        case actionTypes.GET_CLASSES_INFO_BY_GRADEID:
+        case actionTypes.GET_CLASSES_INFO_BY_GRADENUM:
             return{
                 ...state,
                 classesInfo: action.classesInfoPayload

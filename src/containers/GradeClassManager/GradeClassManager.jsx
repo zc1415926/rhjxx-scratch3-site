@@ -18,7 +18,7 @@ class GradeClassManager extends React.Component{
     componentDidMount(){
         //组件一挂载，就使用redux请求班级年级信息
         //调用mapDispatchToProps中的dispatch
-        this.props.onGetGradeClassesInfo();
+        this.props.onGetGradesInfo();
     }
 
     gradeSelectChangeHandler=(selectedGrade)=>{
@@ -35,16 +35,13 @@ class GradeClassManager extends React.Component{
                 {
                     //显示年级信息表
                     //如果有数据就显示数据，如果没有就显示空字符串
-                    this.props.gradeClassesInfo.length>0
-                        ?<GradesTable GradeData={this.props.gradeClassesInfo}
-                            postGradeHandler={(gradeInfo)=>this.props.onPostGradeInfo(gradeInfo)}
-                            putGradeHandler={(gradeInfo)=>this.props.onPutGradeInfo(gradeInfo)}
-                            deleteGradeHandler={(gradeNumToDel)=>this.props.onDeleteGradeInfo(gradeNumToDel)}/>
+                    this.props.gradesInfo.length>0
+                        ?<GradesTable GradeData={this.props.gradesInfo} />
                         :'' 
                 }
                 <h1>班级管理</h1>
                 {/* 获取年级信息后，传入select中，选择不同的年级后，请求该年级的班级数据传递给ClassesTable */}
-                <GradeSelect gradeInfo={this.props.gradeClassesInfo} 
+                <GradeSelect gradeInfo={this.props.gradesInfo} 
                             onGradeSelectChanged={(selectedGrade)=>this.gradeSelectChangeHandler(selectedGrade)}/>
                 {                    
                     //接收到年级信息后显示对应年级的班级信息表
@@ -63,7 +60,7 @@ const mapStateToProps = (state) =>{
     return{
         //获取到的信息，存入this.props.gradeClassesInfo中
         //如何获取数据就交给redux
-        gradeClassesInfo: state.gcInfoReducer.gradeClassesInfo,
+        gradesInfo: state.gcInfoReducer.gradesInfo,
         classesInfo: state.gcInfoReducer.classesInfo
     }
 }
@@ -71,11 +68,8 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) =>{
     return{
         //调用actionCreator，生成action，然后dispatch
-        onGetGradeClassesInfo: ()=>dispatch(actionCreators.getGradeClassesInfo()),
+        onGetGradesInfo: ()=>dispatch(actionCreators.getGradesInfo()),
         onGetClassesInfo: (selectedGrade)=>dispatch(actionCreators.getClassesInfo(selectedGrade)),
-        onPostGradeInfo: (gradeInfo)=>dispatch(actionCreators.postGradeInfo(gradeInfo)),
-        onPutGradeInfo: (gradeInfo)=>dispatch(actionCreators.putGradeInfo(gradeInfo)),
-        onDeleteGradeInfo: (gradeId)=>dispatch(actionCreators.deleteGradeInfo(gradeId))
     }
 }
 

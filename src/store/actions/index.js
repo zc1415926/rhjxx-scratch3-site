@@ -12,7 +12,7 @@ export {
 } from './result';
 
 export {
-    getGradeClassesInfo,
+    getGradesInfo,
     getClassesInfo,
     postGradeInfo,
     putGradeInfo,
