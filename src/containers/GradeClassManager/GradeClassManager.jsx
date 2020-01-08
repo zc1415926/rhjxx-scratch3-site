@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as actionCreators  from '../../store/actions/index';
 import GradesTable from './GradesTable';
 import GradeSelect from '../../components/GradeClassManager/GradeSelect';
-//import ClassesTable from '../../components/GradeClassManager/ClassesTable';
 import ClassesTable from './ClassesTable';
 import ClassesPhPaper from '../../components/GradeClassManager/ClassesPlaceholderPaper';
 
