@@ -13,13 +13,16 @@ export {
 
 export {
     getGradesInfo,
-    getClassesInfo,
     postGradeInfo,
     putGradeInfo,
     deleteGradeInfo,
-    toggoleGradeTableEditing,
+    toggoleGradeTableEditing
+} from './gradesInfoActions';
+
+export {
+    getClassesInfo,
     postClassInfo,
     putClassInfo,
     deleteClassInfo,
-    toggoleClassesTableEditing,
-} from './gradeClassesInfoAction';
+    toggoleClassesTableEditing
+} from './classesInfoActions';
