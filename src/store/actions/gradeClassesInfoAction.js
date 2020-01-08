@@ -30,9 +30,8 @@ export const toGetGradeClassesInfo = (gradeClassesInfo)=>{
 
 export const getClassesInfo = (selectedGrade)=>{
     //let classesInfo = [];
-    
     return dispatch=>{
-        axios.get('/classes?gradeId='+selectedGrade)
+        axios.get('/classes?gradeNum='+selectedGrade)
         .then(res => {
             //classesInfo = res.data;
             dispatch(toGetClassesInfo(res.data))            
@@ -83,9 +82,9 @@ export const putGradeInfo = (gradeInfo)=>{
     }
 }
 
-export const deleteGradeInfo = (gradeId)=>{
+export const deleteGradeInfo = (gradeNumToDel)=>{
     return dispatch=>{
-        axios.delete('/grades/' + gradeId)
+        axios.delete('/grades/' + gradeNumToDel)
             .then(res=>{
                 //post 发送成功后，重新读取年级信息
                 dispatch(getGradeClassesInfo());
@@ -100,6 +99,56 @@ export const deleteGradeInfo = (gradeId)=>{
 export const toggoleGradeTableEditing = (isEditing)=>{
     return {
         type: actionTypes.TOGGLE_GRADE_TABLE_EDITING,
+        isEditing: isEditing
+    }
+}
+
+export const postClassInfo = (classInfo)=>{
+    return dispatch=>{
+         axios.post('/classes', classInfo)
+            .then(res=>{
+                //post 发送成功后，重新读取年级信息，直接从内存删除再显示出来可能与数据库不同步
+                dispatch(getClassesInfo(classInfo.gradeNum));
+                //04.数据库更新完成后，将isUpdating设为false
+                //见：GradesTable.js中的this.props.postGradeHandler(newData);
+                dispatch(toggoleClassesTableEditing(false));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}
+
+export const putClassInfo = (classInfo)=>{
+    return dispatch=>{
+        axios.put('/classes/' + classInfo.id, classInfo)
+            .then(res=>{
+                dispatch(getClassesInfo(classInfo.gradeNum));
+                dispatch(toggoleClassesTableEditing(false));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}
+
+export const deleteClassInfo = (classNumToDel, gradeNum)=>{
+    return dispatch=>{
+        axios.delete('/classes/' + classNumToDel)
+            .then(res=>{
+                //post 发送成功后，重新读取年级信息
+                dispatch(getClassesInfo(gradeNum));
+                dispatch(toggoleClassesTableEditing(false));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}
+
+export const toggoleClassesTableEditing = (isEditing)=>{
+    return {
+        type: actionTypes.TOGGLE_CLASSES_TABLE_EDITING,
         isEditing: isEditing
     }
 }

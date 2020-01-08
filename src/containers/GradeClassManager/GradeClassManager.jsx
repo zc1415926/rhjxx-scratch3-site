@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import * as actionCreators  from '../../store/actions/index';
 import GradesTable from './GradesTable';
 import GradeSelect from '../../components/GradeClassManager/GradeSelect';
-import ClassesTable from '../../components/GradeClassManager/ClassesTable';
+//import ClassesTable from '../../components/GradeClassManager/ClassesTable';
+import ClassesTable from './ClassesTable';
 import ClassesPhPaper from '../../components/GradeClassManager/ClassesPlaceholderPaper';
 
 class GradeClassManager extends React.Component{
@@ -38,17 +39,17 @@ class GradeClassManager extends React.Component{
                         ?<GradesTable GradeData={this.props.gradeClassesInfo}
                             postGradeHandler={(gradeInfo)=>this.props.onPostGradeInfo(gradeInfo)}
                             putGradeHandler={(gradeInfo)=>this.props.onPutGradeInfo(gradeInfo)}
-                            deleteGradeHandler={(gradeId)=>this.props.onDeleteGradeInfo(gradeId)}/>
+                            deleteGradeHandler={(gradeNumToDel)=>this.props.onDeleteGradeInfo(gradeNumToDel)}/>
                         :'' 
                 }
                 <h1>班级管理</h1>
                 {/* 获取年级信息后，传入select中，选择不同的年级后，请求该年级的班级数据传递给ClassesTable */}
                 <GradeSelect gradeInfo={this.props.gradeClassesInfo} 
                             onGradeSelectChanged={(selectedGrade)=>this.gradeSelectChangeHandler(selectedGrade)}/>
-                {
+                {                    
                     //接收到年级信息后显示对应年级的班级信息表
                     this.props.classesInfo.length > 0
-                        ? <ClassesTable classesData={this.props.classesInfo} grade={this.state.selectedGrade}/>
+                        ? <ClassesTable data={this.props.classesInfo} grade={this.state.selectedGrade}/>
                         : <ClassesPhPaper>要查看班级信息表，请在上方选择年级</ClassesPhPaper>
                 }
             </div>

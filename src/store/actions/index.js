@@ -17,5 +17,9 @@ export {
     postGradeInfo,
     putGradeInfo,
     deleteGradeInfo,
-    toggoleGradeTableEditing
+    toggoleGradeTableEditing,
+    postClassInfo,
+    putClassInfo,
+    deleteClassInfo,
+    toggoleClassesTableEditing,
 } from './gradeClassesInfoAction';
