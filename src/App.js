@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter} from 'react-router-dom';
 import MainGUI from './containers/MainGUI';
-import GradesClassesManager from './containers/GradeClassManager/GradeClassManager';
+//import GradesClassesManager from './containers/GradeClassManager/GradeClassManager';
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
         <div className="App">
         {/* <Counter /> */}
         <MainGUI />
-        <GradesClassesManager />
+        {/* <GradesClassesManager /> */}
         </div>
       </BrowserRouter>
     );
