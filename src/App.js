@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-
-//import Counter from './containers/Counter/Counter';
-import './App.css';
 import {BrowserRouter} from 'react-router-dom';
-import MainGUI from './containers/MainGUI';
-//import GradesClassesManager from './containers/GradeClassManager/GradeClassManager';
+import './App.css';
+import MainGUI from './components/MainGUI/MainGUI';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-        {/* <Counter /> */}
         <MainGUI />
-        {/* <GradesClassesManager /> */}
         </div>
       </BrowserRouter>
     );
