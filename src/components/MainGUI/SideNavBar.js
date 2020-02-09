@@ -36,17 +36,26 @@ const SideNavBar = (props)=> {
       >
         <div className={classes.toolbar} />
         <List>
+          {/* 首页 */}
             <ListItem button key={'HomePage'} onClick={()=>{
                 props.history.push("/");
                 }}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={'首页'} />
             </ListItem>
+          {/* 年级班级管理 */}
             <ListItem button key={'GradeClass'} onClick={()=>{
                 props.history.push("/GradeClass");
                 }}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={'年级班级管理'}/>
+            </ListItem>
+          {/* 学生管理 */}
+            <ListItem button key={'Student'} onClick={()=>{
+                props.history.push("/Student");
+                }}>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary={'学生管理'}/>
             </ListItem>
 
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (

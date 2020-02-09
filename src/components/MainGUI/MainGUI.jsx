@@ -7,6 +7,7 @@ import MyAppBar from './AppBar';
 import SideNavBar from './SideNavBar';
 import HomePage from '../HomePage/HomePage';
 import GradeClassManager from '../../containers/GradeClassManager/GradeClassManager';
+import StudentManager from '../../containers/StudentManager/StudentManager';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,7 +31,8 @@ export default function MainGUI(props) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
           <Route path="/" exact component={HomePage} />
-          <Route path="/GradeClass" exact component={GradeClassManager} />
+          <Route path="/GradeClass" component={GradeClassManager} />
+          <Route path="/Student" component={StudentManager} />
       </main>
     </div>
   );
