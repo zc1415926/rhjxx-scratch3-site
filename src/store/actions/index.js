@@ -26,3 +26,12 @@ export {
     deleteClassInfo,
     toggoleClassesTableEditing
 } from './classesInfoActions';
+
+export {
+    getStudents,
+    getStudentsByClassNum,
+    postStudent,
+    putStudent,
+    deleteStudent,
+    toggoleStduentsTableEditing,
+} from './studentActions';

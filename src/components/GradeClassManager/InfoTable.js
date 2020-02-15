@@ -46,7 +46,7 @@ export default function InfoTable(props) {
           }),
         onRowDelete: oldData =>
           new Promise(resolve => {
-            editInfoTable(() => props.deleteHandler(oldData.id), resolve);
+            editInfoTable(() => props.deleteHandler(oldData), resolve);
           }),
       }}
     />

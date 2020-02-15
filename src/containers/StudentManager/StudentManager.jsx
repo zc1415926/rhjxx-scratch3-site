@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import * as actionCreators  from '../../store/actions/index';
 import MySelect from '../../components/StudentManager/MySelect';
+import StudentsTable from './StudentsTable';
 
 class StudentManager extends React.Component{
     constructor(props){
@@ -26,14 +27,10 @@ class StudentManager extends React.Component{
     onClassSelectChanged = (selectedClass) => {
         this.setState({selectedClass: selectedClass});
         //请求班级数据
-        ;
+        this.props.onGetStudentsByClassNum(selectedClass);
     }
 
     render(){
-        console.log('this.props.gradesInfo')
-        console.log(this.props.gradesInfo)
-        console.log('this.props.classesInfo')
-        console.log(this.props.classesInfo)
         return(
             <div>
                 <h1>学生管理</h1>
@@ -49,6 +46,11 @@ class StudentManager extends React.Component{
                             onSelectChanged={(selectedClass)=>this.onClassSelectChanged(selectedClass)} />
                         : <div>请先选择年级</div>
                 }
+                {
+                    this.props.students.length > 0
+                    ? <StudentsTable data={this.props.students} classNum={this.state.selectedClass}/>
+                    : ''
+                }
             </div>
             
         )
@@ -59,6 +61,7 @@ const mapStateToProps = (state) => {
     return{
         gradesInfo: state.gcInfoReducer.gradesInfo,
         classesInfo: state.gcInfoReducer.classesInfo,
+        students: state.studentReducer.students,
     }
 }
 
@@ -66,6 +69,8 @@ const mapDispatchToProps = (dispatch) => {
     return{
         onGetGradesInfo: ()=>dispatch(actionCreators.getGradesInfo()),
         onGetClassesInfo: (selectedGrade)=>dispatch(actionCreators.getClassesInfo(selectedGrade)),
+        onGetStudents: ()=>dispatch(actionCreators.getStudents()),
+        onGetStudentsByClassNum: (classNum)=>dispatch(actionCreators.getStudentsByClassNum(classNum)),
     }
 }
 

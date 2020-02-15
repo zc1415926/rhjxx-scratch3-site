@@ -16,12 +16,14 @@ import thunk from 'redux-thunk';
 //import counterReducer from './store/reducers/counter';
 //import resultReducer from './store/reducers/result';
 import gradeClassesInfoReducer from './store/reducers/gradeClassesInfoReducer';
+import studentReducer from './store/reducers/studentReducer';
 
 //把2个reducer合成一个，管counter的叫ctr，管result的叫res
 const rootReducer = combineReducers({
     //ctr: counterReducer,
     //res: resultReducer,
-    gcInfoReducer: gradeClassesInfoReducer
+    gcInfoReducer: gradeClassesInfoReducer,
+    studentReducer: studentReducer,
 });
 
 //使用composerEnhancers配置redux devtool
