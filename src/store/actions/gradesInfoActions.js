@@ -61,9 +61,9 @@ export const putGradeInfo = (gradeInfo)=>{
     }
 }
 
-export const deleteGradeInfo = (gradeNumToDel)=>{
+export const deleteGradeInfo = (gradeInfo)=>{
     return dispatch=>{
-        axios.delete('/grades/' + gradeNumToDel)
+        axios.delete('/grades/' + gradeInfo.id)
             .then(res=>{
                 //post 发送成功后，重新读取年级信息
                 dispatch(getGradesInfo());

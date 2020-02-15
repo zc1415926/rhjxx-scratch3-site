@@ -7,8 +7,8 @@ class ClassesTable extends React.Component {
 
   render() {
     const columns = [
-      { title: 'classNum', field: 'classNum' },
-      { title: 'className', field: 'className' },
+      { title: '班级编号', field: 'classNum' },
+      { title: '班级名称', field: 'className' },
     ];
 
     return (
@@ -17,8 +17,8 @@ class ClassesTable extends React.Component {
         data={this.props.data}
         options={{ search: false }}
         postHandler={(newData) => this.props.onPostClassInfo({...newData, 'gradeNum':this.props.grade})}
-        putHandler={(newData) => this.props.onPutClassInfo({...newData, 'gradeNum':this.props.grade})}
-        deleteHandler={(id) => this.props.onDeleteClassInfo(id, this.props.grade)}
+        putHandler={(newData) => this.props.onPutClassInfo(newData)}
+        deleteHandler={(oldData) => this.props.onDeleteClassInfo(oldData)}
         toggleEditingHandler={(isEditing) => this.props.onToggoleClassesTableEditing(isEditing)}
         isEditing={this.props.isEditing}
       />
@@ -34,9 +34,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPostClassInfo: (gradeInfo, gradeNum) => dispatch(actionCreators.postClassInfo(gradeInfo, gradeNum)),
-    onPutClassInfo: (gradeInfo) => dispatch(actionCreators.putClassInfo(gradeInfo)),
-    onDeleteClassInfo: (classNumToDel, gradeNum) => dispatch(actionCreators.deleteClassInfo(classNumToDel, gradeNum)),
+    onPostClassInfo: (classInfo) => dispatch(actionCreators.postClassInfo(classInfo)),
+    onPutClassInfo: (classInfo) => dispatch(actionCreators.putClassInfo(classInfo)),
+    onDeleteClassInfo: (classInfo) => dispatch(actionCreators.deleteClassInfo(classInfo)),
     onToggoleClassesTableEditing: (isEditing) => dispatch(actionCreators.toggoleClassesTableEditing(isEditing)),
   }
 }

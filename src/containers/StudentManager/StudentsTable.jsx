@@ -15,8 +15,9 @@ class StudentsTable extends React.Component {
       <InfoTable title={this.props.isStudentsTableEditing?'true':'false'}
                  columns={columns}
                  data={this.props.data}
+                 //新建学生的时候，没有在表格里填班级信息，所以就默认添加之前选中的classNum到数据中
                  postHandler={(newData) => this.props.onPostStudent({...newData, 'classNum': this.props.classNum})}
-                 putHandler={(newData) => this.props.onPutStudent({...newData, 'classNum': this.props.classNum})}
+                 putHandler={(newData) => this.props.onPutStudent(newData)}
                  deleteHandler={(oldData) => this.props.onDeleteStudent(oldData)}
                  toggleEditingHandler={(isEditing)=>this.props.onToggoleStduentsTableEditing(isEditing)}
                  isStudentsTableEditing={this.props.isStudentsTableEditing}

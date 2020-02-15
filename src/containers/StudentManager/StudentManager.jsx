@@ -34,8 +34,6 @@ class StudentManager extends React.Component{
         return(
             <div>
                 <h1>学生管理</h1>
-                <h2>选择的年级：{this.state.selectedGrade}</h2>
-                <h2>选择的班级：{this.state.selectedClass}</h2>
                 <MySelect text='请选择年级' itemNum='gradeNum' itemName='gradeName' 
                     items={this.props.gradesInfo}
                     onSelectChanged={(selectedGrade)=>this.onGradeSelectChanged(selectedGrade)} />

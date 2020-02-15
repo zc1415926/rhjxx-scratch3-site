@@ -4,11 +4,9 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:3000';
 
 export const getClassesInfo = (selectedGrade)=>{
-    //let classesInfo = [];
     return dispatch=>{
         axios.get('/classes?gradeNum='+selectedGrade)
         .then(res => {
-            //classesInfo = res.data;
             dispatch(toGetClassesInfo(res.data))            
         })
         .catch(err => {
@@ -53,12 +51,12 @@ export const putClassInfo = (classInfo)=>{
     }
 }
 
-export const deleteClassInfo = (classNumToDel, gradeNum)=>{
+export const deleteClassInfo = (classInfo)=>{
     return dispatch=>{
-        axios.delete('/classes/' + classNumToDel)
+        axios.delete('/classes/' + classInfo.id)
             .then(res=>{
                 //post 发送成功后，重新读取年级信息
-                dispatch(getClassesInfo(gradeNum));
+                dispatch(getClassesInfo(classInfo.gradeNum));
                 dispatch(toggoleClassesTableEditing(false));
             })
             .catch(err => {
