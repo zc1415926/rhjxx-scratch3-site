@@ -2,30 +2,6 @@ import React from 'react';
 import MaterialTable from 'material-table';
 
 export default function InfoTable(props) {
-
- /*  const editInfoTable = (yourFunc, resolve) => {
-    //01.开始编辑的时候isUpdating = false
-    //02.当按下确定按钮，将isUpdating设定为true
-    props.toggleEditingHandler(true)
-    //这个函数是从参数里传进来的，表格的add, update, delete唯一不同的就是在里的函数
-    yourFunc();
-    //每0.1秒检测一次isUpdating的值
-    let timer = setInterval(() => {
-      //03.isUpdating为true时，不执行resolve()，表格一直在转圈,等待后台数据更新
-      if (props.isEditing) {
-
-        //04.数据库更新完成后，将isUpdating设为false
-        //见：gradeClassesInfoAction.js中的dispatch(toggoleGradeTableUpdating(false))
-      } else {
-        //05.程序检测到isupdating===false后，执行resolve()
-        //resolve是从参数里传进来的
-        //resolve();
-        //结束计时器
-        clearInterval(timer)
-      }
-    }, 100);
-  } */
-
   return (
     <MaterialTable
       title={props.title}
@@ -38,17 +14,16 @@ export default function InfoTable(props) {
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {
-           // editInfoTable(() => props.postHandler(newData, resolve), resolve);
-           props.postHandler(newData, resolve)
+            //表格在执行操作的时候会显示一个圈圈将自己挡住避免数据出错
+            //后台数据操作完成后调用resolve()就会退出转圈圈状态
+            props.postHandler(newData, resolve)
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
-            //editInfoTable(() => props.putHandler(newData), resolve);
             props.putHandler(newData, resolve)
           }),
         onRowDelete: oldData =>
           new Promise(resolve => {
-            //editInfoTable(() => props.deleteHandler(oldData), resolve);
             props.deleteHandler(oldData, resolve)
           }),
       }}
