@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import * as actionCreators  from '../../store/actions/index';
-import MySelect from '../../components/StudentManager/MySelect';
+import MySelect from '../../components/commonUI/MySelect';
 import StudentsTable from './StudentsTable';
 
 class StudentManager extends React.Component{

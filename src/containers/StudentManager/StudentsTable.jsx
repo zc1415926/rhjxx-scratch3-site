@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/actions/index';
-import InfoTable from '../../components/GradeClassManager/InfoTable';
+import InfoTable from '../../components/commonUI/InfoTable';
 
 class StudentsTable extends React.Component {
 
