@@ -3,7 +3,6 @@ import * as actionTypes from '../actions/actionTypes';
 //初始数据
 const initialState = {
     students: [],
-    isStudentsTableEditing: false,
 }
 //数据处理器
 const reducer = (state=initialState, action)=>{
@@ -20,11 +19,6 @@ const reducer = (state=initialState, action)=>{
                 ...state,
                 students: action.students
             }
-        /* case actionTypes.TOGGLE_STUDENTS_TABLE_EDITING:
-            return{
-                ...state,
-                isStudentsTableEditing: action.isEditing
-            } */
         default:
     }
 
