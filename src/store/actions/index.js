@@ -16,7 +16,7 @@ export {
     postGradeInfo,
     putGradeInfo,
     deleteGradeInfo,
-    toggoleGradeTableEditing
+    //toggoleGradeTableEditing
 } from './gradesInfoActions';
 
 export {
@@ -24,7 +24,7 @@ export {
     postClassInfo,
     putClassInfo,
     deleteClassInfo,
-    toggoleClassesTableEditing
+    //toggoleClassesTableEditing
 } from './classesInfoActions';
 
 export {
@@ -33,5 +33,5 @@ export {
     postStudent,
     putStudent,
     deleteStudent,
-    toggoleStduentsTableEditing,
+    //toggoleStduentsTableEditing,
 } from './studentActions';

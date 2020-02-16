@@ -3,7 +3,7 @@ import MaterialTable from 'material-table';
 
 export default function InfoTable(props) {
 
-  const editInfoTable = (yourFunc, resolve) => {
+ /*  const editInfoTable = (yourFunc, resolve) => {
     //01.开始编辑的时候isUpdating = false
     //02.当按下确定按钮，将isUpdating设定为true
     props.toggleEditingHandler(true)
@@ -19,12 +19,12 @@ export default function InfoTable(props) {
       } else {
         //05.程序检测到isupdating===false后，执行resolve()
         //resolve是从参数里传进来的
-        resolve();
+        //resolve();
         //结束计时器
         clearInterval(timer)
       }
     }, 100);
-  }
+  } */
 
   return (
     <MaterialTable
@@ -38,15 +38,18 @@ export default function InfoTable(props) {
       editable={{
         onRowAdd: newData =>
           new Promise(resolve => {
-            editInfoTable(() => props.postHandler(newData), resolve);
+           // editInfoTable(() => props.postHandler(newData, resolve), resolve);
+           props.postHandler(newData, resolve)
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
-            editInfoTable(() => props.putHandler(newData), resolve);
+            //editInfoTable(() => props.putHandler(newData), resolve);
+            props.putHandler(newData, resolve)
           }),
         onRowDelete: oldData =>
           new Promise(resolve => {
-            editInfoTable(() => props.deleteHandler(oldData), resolve);
+            //editInfoTable(() => props.deleteHandler(oldData), resolve);
+            props.deleteHandler(oldData, resolve)
           }),
       }}
     />

@@ -20,11 +20,11 @@ const reducer = (state=initialState, action)=>{
                 ...state,
                 students: action.students
             }
-        case actionTypes.TOGGLE_STUDENTS_TABLE_EDITING:
+        /* case actionTypes.TOGGLE_STUDENTS_TABLE_EDITING:
             return{
                 ...state,
                 isStudentsTableEditing: action.isEditing
-            }
+            } */
         default:
     }
 

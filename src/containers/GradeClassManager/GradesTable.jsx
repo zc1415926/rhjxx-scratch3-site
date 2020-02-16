@@ -15,11 +15,11 @@ class GradeTable extends React.Component {
                  columns={columns}
                  data={this.props.GradeData}
                  options={{search: false}}
-                 postHandler={(newData) => this.props.onPostGradeInfo(newData)}
-                 putHandler={(newData) => this.props.onPutGradeInfo(newData)}
-                 deleteHandler={(oldData) => this.props.onDeleteGradeInfo(oldData)}
-                 toggleEditingHandler={(isEditing)=>this.props.onToggoleGradeTableEditing(isEditing)}
-                 isEditing={this.props.isEditing}
+                 postHandler={(newData, resolve) => this.props.onPostGradeInfo(newData, resolve)}
+                 putHandler={(newData, resolve) => this.props.onPutGradeInfo(newData, resolve)}
+                 deleteHandler={(oldData, resolve) => this.props.onDeleteGradeInfo(oldData, resolve)}
+                 //toggleEditingHandler={(isEditing)=>this.props.onToggoleGradeTableEditing(isEditing)}
+                 //isEditing={this.props.isEditing}
                  />
     );
   }
@@ -27,16 +27,16 @@ class GradeTable extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isEditing: state.gcInfoReducer.isGradeTableEditing,
+    //isEditing: state.gcInfoReducer.isGradeTableEditing,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPostGradeInfo: (gradeInfo)=>dispatch(actionCreators.postGradeInfo(gradeInfo)),
-    onPutGradeInfo: (gradeInfo)=>dispatch(actionCreators.putGradeInfo(gradeInfo)),
-    onDeleteGradeInfo: (gradeInfo)=>dispatch(actionCreators.deleteGradeInfo(gradeInfo)),
-    onToggoleGradeTableEditing: (isEditing) => dispatch(actionCreators.toggoleGradeTableEditing(isEditing)),
+    onPostGradeInfo: (gradeInfo, resolve)=>dispatch(actionCreators.postGradeInfo(gradeInfo, resolve)),
+    onPutGradeInfo: (gradeInfo, resolve)=>dispatch(actionCreators.putGradeInfo(gradeInfo, resolve)),
+    onDeleteGradeInfo: (gradeInfo, resolve)=>dispatch(actionCreators.deleteGradeInfo(gradeInfo, resolve)),
+    //onToggoleGradeTableEditing: (isEditing) => dispatch(actionCreators.toggoleGradeTableEditing(isEditing)),
   }
 }
 
