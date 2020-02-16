@@ -18,8 +18,6 @@ class GradeTable extends React.Component {
                  postHandler={(newData, resolve) => this.props.onPostGradeInfo(newData, resolve)}
                  putHandler={(newData, resolve) => this.props.onPutGradeInfo(newData, resolve)}
                  deleteHandler={(oldData, resolve) => this.props.onDeleteGradeInfo(oldData, resolve)}
-                 //toggleEditingHandler={(isEditing)=>this.props.onToggoleGradeTableEditing(isEditing)}
-                 //isEditing={this.props.isEditing}
                  />
     );
   }
@@ -27,7 +25,6 @@ class GradeTable extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    //isEditing: state.gcInfoReducer.isGradeTableEditing,
   }
 }
 
@@ -36,7 +33,6 @@ const mapDispatchToProps = (dispatch) => {
     onPostGradeInfo: (gradeInfo, resolve)=>dispatch(actionCreators.postGradeInfo(gradeInfo, resolve)),
     onPutGradeInfo: (gradeInfo, resolve)=>dispatch(actionCreators.putGradeInfo(gradeInfo, resolve)),
     onDeleteGradeInfo: (gradeInfo, resolve)=>dispatch(actionCreators.deleteGradeInfo(gradeInfo, resolve)),
-    //onToggoleGradeTableEditing: (isEditing) => dispatch(actionCreators.toggoleGradeTableEditing(isEditing)),
   }
 }
 

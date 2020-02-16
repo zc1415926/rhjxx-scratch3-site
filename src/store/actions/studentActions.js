@@ -84,10 +84,3 @@ export const toGetStudentsByClassNum = (students) => {
         students: students
     }
 }
-/* 
-export const toggoleStduentsTableEditing = (isEditing)=>{
-    return {
-        type: actionTypes.TOGGLE_STUDENTS_TABLE_EDITING,
-        isEditing: isEditing
-    }
-} */

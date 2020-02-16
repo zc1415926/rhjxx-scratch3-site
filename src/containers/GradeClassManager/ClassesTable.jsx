@@ -19,8 +19,6 @@ class ClassesTable extends React.Component {
         postHandler={(newData, resolve) => this.props.onPostClassInfo({...newData, 'gradeNum':this.props.grade}, resolve)}
         putHandler={(newData, resolve) => this.props.onPutClassInfo(newData, resolve)}
         deleteHandler={(oldData, resolve) => this.props.onDeleteClassInfo(oldData, resolve)}
-        //toggleEditingHandler={(isEditing) => this.props.onToggoleClassesTableEditing(isEditing)}
-        //isEditing={this.props.isEditing}
       />
     );
   }
@@ -28,7 +26,6 @@ class ClassesTable extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    //isEditing: state.gcInfoReducer.isClassesTableEditing,
   }
 }
 
@@ -37,7 +34,6 @@ const mapDispatchToProps = (dispatch) => {
     onPostClassInfo: (classInfo, resolve) => dispatch(actionCreators.postClassInfo(classInfo, resolve)),
     onPutClassInfo: (classInfo, resolve) => dispatch(actionCreators.putClassInfo(classInfo, resolve)),
     onDeleteClassInfo: (classInfo, resolve) => dispatch(actionCreators.deleteClassInfo(classInfo, resolve)),
-    //onToggoleClassesTableEditing: (isEditing) => dispatch(actionCreators.toggoleClassesTableEditing(isEditing)),
   }
 }
 

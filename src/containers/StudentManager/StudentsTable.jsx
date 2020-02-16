@@ -22,8 +22,6 @@ class StudentsTable extends React.Component {
                  postHandler={(newData, resolve) => this.props.onPostStudent({...newData, 'classNum': this.props.classNum}, resolve)}
                  putHandler={(newData, resolve) => this.props.onPutStudent(newData, resolve)}
                  deleteHandler={(oldData, resolve) => this.props.onDeleteStudent(oldData, resolve)}
-                 //toggleEditingHandler={(isEditing)=>this.props.onToggoleStduentsTableEditing(isEditing)}
-                 //isStudentsTableEditing={this.props.isStudentsTableEditing}
                  />
     );
   }
@@ -31,7 +29,6 @@ class StudentsTable extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isStudentsTableEditing: state.studentReducer.isStudentsTableEditing,
   }
 }
 
@@ -40,7 +37,6 @@ const mapDispatchToProps = (dispatch) => {
     onPostStudent: (student, resolve)=>dispatch(actionCreators.postStudent(student, resolve)),
     onPutStudent: (student, resolve)=>dispatch(actionCreators.putStudent(student, resolve)),
     onDeleteStudent: (student, resolve)=>dispatch(actionCreators.deleteStudent(student, resolve)),
-    //onToggoleStduentsTableEditing: (isEditing) => dispatch(actionCreators.toggoleStduentsTableEditing(isEditing)),
   }
 }
 
